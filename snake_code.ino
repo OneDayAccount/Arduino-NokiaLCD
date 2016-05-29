@@ -101,14 +101,14 @@ void loop() {
 	for(k = 0; k < 24; k++) map_array[i][k] = 0;
   } // aizpilda kartes masīvu ar 0 vērtību
   
-  map_array[foodx][foody] = 1; // kartes masīva adrese(ar ēdiena koordinātēm) pielīdzina 1
+  map_array[foodx][foody] = 1; // kartes masīva elementu (adrese ir ēdiena koordinātes) pielīdzina 1
   
   if(!digitalRead(BUTTON_R) && d != 'R') d = 'L'; // čūskas kontroles
   else if(!digitalRead(BUTTON_U) && d != 'D') d = 'U';
   else if(!digitalRead(BUTTON_L) && d != 'L') d = 'R';
   else if(!digitalRead(BUTTON_D) && d != 'U') d = 'D';	
   
-  nx = snake_x[0]; // x un y koordināšu masīvu apstrāde - princips vienkāršs - lai čūsku pārvietoties, aste (koordinātes) 
+  nx = snake_x[0]; // x un y koordināšu masīvu apstrāde - princips vienkāršs - lai čūsku pārvietotos, aste beigas (koordinātes) 
   ny = snake_y[0]; // cikliski tiek pielikta priekšā galvai
   
   if(d == 'R') nx++;
@@ -131,7 +131,7 @@ void loop() {
   }
   else {
 	snake_x[lenght-1] = nx;
-    snake_y[lenght-1] = ny;
+        snake_y[lenght-1] = ny;
   }
   
   tempx = snake_x[lenght-1];
@@ -159,5 +159,5 @@ void loop() {
     c = c + 4;
   }
   delay(dtime); // kustības ātrums: jo lielāks dtime, jo lēnāk kustas čūska
-  posmarker(); // uzstāda attēlošanas koordinātes uz 0;0
+  posmarker(); // uzstāda attēlošanas koordinātes uz 0:0
 }
