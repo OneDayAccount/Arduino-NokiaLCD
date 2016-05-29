@@ -108,15 +108,16 @@ void loop() {
   else if(!digitalRead(BUTTON_L) && d != 'L') d = 'R';
   else if(!digitalRead(BUTTON_D) && d != 'U') d = 'D';	
   
-  nx = snake_x[0]; // x un y koordināšu masīvu apstrāde - princips vienkāršs - lai čūsku pārvietotos, aste beigas (koordinātes) 
-  ny = snake_y[0]; // cikliski tiek pielikta priekšā galvai
+  nx = snake_x[0]; // x un y koordināšu masīvu apstrāde - princips vienkāršs - lai čūsku pārvietotos, astes pēdējais
+  ny = snake_y[0]; // gabals (koordinātes) cikliski tiek pielikts priekšā galvai
   
   if(d == 'R') nx++;
   else if(d == 'L') nx--;
   else if(d == 'U') ny--;
   else if(d == 'D') ny++;
-
-  if(nx == -1 || nx == 42 || ny == -1 || ny == 24 || check_collision(nx, ny, snake_x, snake_y)) { // pārbauda, vai ir sadursme ar sienām vai ķermeni
+  
+  // pārbauda, vai ir sadursme ar sienām vai ķermeni, ja ir, tad uzsāk spēli no jauna
+  if(nx == -1 || nx == 42 || ny == -1 || ny == 24 || check_collision(nx, ny, snake_x, snake_y)) { 
         create_snake();
         create_food();
         return;
